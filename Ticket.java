@@ -15,10 +15,11 @@ public class Ticket implements Comparable{
     private int _priority;
     private String _solutionDescription;
 
-    public Ticket(String newName){
+    public Ticket(String newName, String _newProblem, int _newId, int _newPriority){
 	_name = newName;
-	_problem = "";
-	_id = 0;
+	_problem = _newProblem;
+	_id = _newId;
+	_priority = _newPriority;
     }
 
     public void updateProb(String newProb){
