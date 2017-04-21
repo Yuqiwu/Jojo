@@ -46,16 +46,5 @@ public class Ticket implements Comparable{
 	    return -1;
     }
 
-    
-
-      public static void main(String[] args){
-	
-
-	
-	
-	//System.out.println( randomID() );
-	
-    }
-    
 
 } 
