@@ -7,13 +7,13 @@
 
 import cs1.Keyboard;
 
-public class Ticket{
+public class Ticket implements Comparable{
 
     private String _name;
     private String _problem;
     private int _id;
-    //private int _priority;
-    //private int _status;
+    private int _priority;
+    private String _solutionDescription;
 
     public Ticket(String newName){
 	_name = newName;
@@ -33,6 +33,18 @@ public class Ticket{
 	return _id;
     }
     
+    //returns 1 if Ticket calling compareTo has higher priority
+    //0 if same priority
+    //-1 if lower priority
+    public int compareTo(Object o) {
+	if (this._priority> ((Ticket) o)._priority)
+	    return 1;
+	else if (this._priority> ((Ticket)o)._priority)
+	    return 0;
+	else
+	    return -1;
+    }
+
     public static String convertIntToString(int newID){
 	String ret = "";
 	if (newID > 9)
