@@ -3,7 +3,7 @@ import cs1.Keyboard;
 public class HelpDesk
 {
 
-    private static ArrayPriorityQueue<Ticket> _line = new ArrayPriorityQueue<Ticket>;
+    private static ArrayPriorityQueue<Ticket> _line = new ArrayPriorityQueue<Ticket>();
 
     public static String convertIntToString(int newID){
 	String ret = "";
@@ -14,7 +14,7 @@ public class HelpDesk
 	return ret;
     }
 
-    public boolean findSolution(String problem){
+    public static boolean findSolution(String problem){
 	if ( problem.equals("internet") ||
 	     problem.equals("frozen")){
 	    return true;
@@ -22,7 +22,7 @@ public class HelpDesk
 	return false;
     }
 
-    public void giveSolution(String problem){
+    public static void giveSolution(String problem){
 	if( problem.equals("internet") )
 	    System.out.println("Please unplug your router's cable, wait for 10 seconds, then plug back the cable again");
 	else{
@@ -31,28 +31,40 @@ public class HelpDesk
     }
 
     public static void main(String[] args) {
+
 	int ctr = 0;
 	boolean isSolve = false;
 	
 	System.out.println("What is your name");
 	String name = Keyboard.readWord();
-	Ticket user = new Ticket(name);
+
+	System.out.println("What is your position?");
+	System.out.println("0 for C suite");
+	System.out.println("1 for manager");
+	System.out.println("2 for worker");
+	System.out.println("3 for visitor");
+	int priority=Keyboard.readInt();
 	
 	System.out.println("What is your problem");
 	String prob = Keyboard.readWord();
-	user.updateProb(prob);
-	isSolve = user.findSolution(prob);
+
+	int ID=(int)(Math.random()*1000);
+
+	Ticket user = new Ticket(name, prob, ID, priority);
+	_line.add(user);
+	//user.updateProb(prob);
+	isSolve = findSolution(prob);
 	
 	while (! isSolve && ctr < 3){
 	    System.out.println("Sorry we do not understand your problem, can you rephrase your problem?");
 	    prob = Keyboard.readWord();
 	    user.updateProb(prob);
-	    isSolve = user.findSolution(prob);
+	    isSolve = findSolution(prob);
 	    ctr++;
 	}
 	
 	if (isSolve){
-	    user.giveSolution(prob);
+	    giveSolution(prob);
 	}
 	
 	else{
