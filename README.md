@@ -27,3 +27,12 @@ The Ticket will just be a container that'll hold all the information generated f
 We used the compareTo method from the interface Comparable to compare ticket priority values. Dequeing from the queue will always be at the same spot, while the enqueue will be done based off of the priority.
 
 Therefore, dequeue will be O(1), and enqueue will be O(n).
+
+## Extra
+
+- The use of the comparable interface
+- Witty comments
+- Continuous help(a while loop)
+- Ticket is called later in the cycle instead of being answered right away
+
+
