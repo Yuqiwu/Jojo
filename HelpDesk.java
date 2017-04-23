@@ -51,7 +51,7 @@ public class HelpDesk
 	    {
 		response = "Try restarting your computer.";
 	    }
-	else if (statement.indexOf("blue screen")){
+	else if (statement.indexOf("blue screen") >= 0){
 	    response = "https://support.microsoft.com/en-us/help/17074/windows-7-resolving-stop-blue-screen-errors, go to this website :)";
 	}
 	else
