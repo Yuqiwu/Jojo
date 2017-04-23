@@ -26,12 +26,28 @@ public class Ticket implements Comparable{
 	_problem = newProb;
     }
 
+    public void updateSolution(String solution){
+	_solutionDescription = solution;
+    }
+    
     public void assignID(int newID){
 	_id = newID;
     }
 
     public int getID(){
 	return _id;
+    }
+
+    public String getProb(){
+	return _problem;
+    }
+
+    public String getSolution(){
+	return _solutionDescription;
+    }
+
+    public String getName(){
+	return _name;
     }
     
     //returns 1 if Ticket calling compareTo has higher priority
