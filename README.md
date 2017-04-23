@@ -1,11 +1,11 @@
 # Jojo
 Matteo Wong, Jeffrey Weng, Yuqi Wu
 
-##Design
+## Design
 
-###Description
+### Description
 CLI-based helpdesk program.<br>
-##### *Procedure*
+#### *Procedure*
 1. Ask Question 
 2. Get sorted into a priority queue
 3. Questions will be answered based on your priority level
