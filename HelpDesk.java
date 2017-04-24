@@ -16,23 +16,6 @@ public class HelpDesk
     }
 
 
-    /*
-    public static boolean findSolution(String problem){
-	if ( problem.indexOf("internet") >-1 ||
-	     problem.indexOf("frozen")>-1){
-	    return true;
-	}
-	return false;
-    }
-
-    public static void giveSolution(String problem){
-	if( problem.indexOf("internet")>-1 )
-	    System.out.println("Please unplug your router's cable, wait for 10 seconds, then plug back the cable again");
-	else{
-	    System.out.println("Please restart your computer by press your power button and hold it until the monitor turns black");
-	}
-	}*/
-
     public static String getResponse(String statement)
     {
 	String response = "";
@@ -53,6 +36,13 @@ public class HelpDesk
 	    }
 	else if (statement.indexOf("blue screen") >= 0){
 	    response = "https://support.microsoft.com/en-us/help/17074/windows-7-resolving-stop-blue-screen-errors, go to this website :)";
+	}
+	else if (statement.indexOf("virus")>=0) {
+	    response = "If you downloaded malware, you should immediately shut down your computer, change all your passwords remotely, and seek more professional assistance than we can offer at this moment.";
+	}
+	else if (statement.indexOf("turn on")>=0 ||
+		 statement.indexOf("power")>=0) {
+	    response="Make sure you turned on the computer itself and not just the monitor, and make sure it is plugged in.";
 	}
 	else
 	    {
@@ -114,29 +104,7 @@ public class HelpDesk
 	System.out.println(toSolve.getSolution()+"\n");
 
 	}
-	/*
-	//user.updateProb(prob);
-	isSolve = findSolution(prob);
-	
-	while (! isSolve && ctr < 3){
-	System.out.println("Sorry we do not understand your problem, can you rephrase your problem?");
-	prob = Keyboard.readString();
-	user.updateProb(prob);
-	isSolve = findSolution(prob);
-	ctr++;
-	}
-	
-	if (isSolve){
-	giveSolution(prob);
-	}
-	
-	else{
-	user.assignID( (int)(Math.random() * 100) );
-	String tempS = convertIntToString( user.getID() );
-	System.out.println("Sorry we still cannot understand your problem, we will assign you a real person to help you.\nThis is your ID " + tempS + ", please wait for us to contact you.");
-	}
 
-	*/
     }
 
 }
