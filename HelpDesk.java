@@ -65,43 +65,64 @@ public class HelpDesk
 
 	int IDcounter=3;
 	while (true) {
-	Ticket toSolve;
-	int ctr = 0;
-	boolean isSolve = false;
+	    Ticket toSolve;
+	    int ctr = 0;
+	    boolean isSolve = false;
 	
-	System.out.println("What is your name");
-	String name=Keyboard.readString();
+	    System.out.println("What is your name");
+	    String name=Keyboard.readString();
 
-	int priority=-1;//=Keyboard.readInt();
-	while (priority>3 || priority<0){
-	    System.out.println("What is your position?");
-	    System.out.println("0 for C suite");
-	    System.out.println("1 for manager");
-	    System.out.println("2 for worker");
-	    System.out.println("3 for visitor");
-	    priority=Keyboard.readInt();
-	}
+	    int priority=-1;//=Keyboard.readInt();
+	    while (priority>3 || priority<0){
+		System.out.println("What is your position?");
+		System.out.println("0 for C suite");
+		System.out.println("1 for manager");
+		System.out.println("2 for worker");
+		System.out.println("3 for visitor");
+		priority=Keyboard.readInt();
+	    }
 	
-	System.out.println("What is your problem");
-	String prob = Keyboard.readString();
+	    System.out.println("What is your problem");
+	    String prob = Keyboard.readString();
 
-	int ID=IDcounter;
-	IDcounter+=1;
+	    Ticket user = new Ticket(name, prob, IDcounter, priority);
+	    IDcounter+=1;
+	    _line.add(user);
 
-	Ticket user = new Ticket(name, prob, ID, priority);
-	_line.add(user);
+	    String tempS = convertIntToString( user.getID() );
+	    System.out.println("Thank you "+name+". This is your ID: " + tempS + ", please wait for us to contact you.");
+	
+	    while (true) {
+		System.out.println("Do you have another problem? (yes/no)");
+		String ans = Keyboard.readString().toLowerCase();
+		if (ans.equals("yes")) {
+		    System.out.println("What is your other problem?");
+		    prob = Keyboard.readString();
+		    user=new Ticket(name,prob,IDcounter,priority);
+		    IDcounter+=1;
+		    tempS=convertIntToString(user.getID());
+		    _line.add(user);
+		    System.out.println("Thank you "+name+". This is your ID: " + tempS + ", please wait for us to contact you.");
+		}
+	    
+		else if (ans.equals("no"))
+		    break;
+		else {
+		    System.out.println("We will consider that a no");
+		    break;
+		}
 
-	String tempS = convertIntToString( user.getID() );
-	System.out.println("Thank you "+name+". This is your ID: " + tempS + ", please wait for us to contact you.");
 
-	if (!_line.isEmpty())
-	    toSolve=_line.removeMin();
-	else
-	    continue;
+	    }
 
-	toSolve.updateSolution(getResponse(toSolve.getProb()));
-	System.out.println("\nCalling ID " + convertIntToString(toSolve.getID())+ ". Hello "+toSolve.getName()+". We have attempted to handle your problem.");
-	System.out.println(toSolve.getSolution()+"\n");
+	    if (!_line.isEmpty())
+		toSolve=_line.removeMin();
+	    else
+		continue;
+
+	    toSolve.updateSolution(getResponse(toSolve.getProb()));
+	    System.out.println("\nCalling ID " + convertIntToString(toSolve.getID())+ ". Hello "+toSolve.getName()+". We have attempted to handle your problem.");
+	    System.out.println(toSolve.getSolution()+"\n");
 
 	}
 
